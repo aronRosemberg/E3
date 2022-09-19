@@ -5,6 +5,7 @@ const pizzas = [
     nombre:"Mozarella",
     ingredientes: ["queso mozarella", "prepizza", "salsa"], 
     precio:500,
+    img:'./imagen/muzzarella.jpg'
 
     },
 
@@ -13,6 +14,7 @@ const pizzas = [
         nombre:"Napolitana",
         ingredientes: ["queso mozarella", "prepizza", "salsa", "tomates", "hojas de albahaca", "aceite de oliva"], 
         precio:1000,
+        img:'./imagen/napolitana.jpg'
     
     },
 
@@ -21,6 +23,7 @@ const pizzas = [
         nombre:"Pepperoni",
         ingredientes: ["queso mozarella", "prepizza", "salsa", "pepperoni"], 
         precio:8000,
+        img:'./imagen/pepperoni.webp'
     
 
     },
@@ -30,6 +33,7 @@ const pizzas = [
         nombre:"Paisana",
         ingredientes: ["queso mozarella", "prepizza", "salsa", "papas fritas", "huevos fritos","jamon"], 
         precio:1200,
+        img: './imagen/paizana.jpg'
     
     },
 
@@ -38,6 +42,8 @@ const pizzas = [
         nombre:"Fugazzeta",
         ingredientes: ["queso mozarella", "prepizza", "salsa", "cebolla", "oregano"], 
         precio:700,
+        img: './imagen/fugazzera.jpg'
+
     
     },
 
@@ -46,7 +52,7 @@ const pizzas = [
         nombre:"Margarita",
         ingredientes: ["queso mozarella", "prepizza", "salsa", "hojas de albahaca", "oregano", "aceite de oliva"], 
         precio:1000,
-    
+        img: './imagen/nargarita.jpg'
     },
 
     {
@@ -54,7 +60,7 @@ const pizzas = [
         nombre:"Cuatro quesos",
         ingredientes: ["queso mozarella", "prepizza", "salsa", "queso fontina", "queso gorgonzola", "queso parmesano"], 
         precio:950,
-    
+        img: './imagen/4quesos.jpg'
     },
 
 ]
@@ -127,6 +133,7 @@ const precio = document.getElementById("Precio")
 const input = document.getElementById("Input")
 
 const boton = document.getElementById("Boton")
+
 const cards = document.getElementById("cards")
 
 let array = JSON.parse(localStorage.getItem('tasks')) || [] //parse combierte codigo Json a JS y getIten obtiene info de LS
@@ -211,3 +218,9 @@ function crearElemento (valor){
 function renderizarElemento (valor){
   cards.innerHTML = crearElemento(valor)
 }
+
+  
+
+
+
+div.addEventListener("submit", mostrarCards );
