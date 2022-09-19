@@ -127,6 +127,13 @@ const precio = document.getElementById("Precio")
 const input = document.getElementById("Input")
 
 const boton = document.getElementById("Boton")
+const cards = document.getElementById("cards")
+
+let array = JSON.parse(localStorage.getItem('tasks')) || [] //parse combierte codigo Json a JS y getIten obtiene info de LS
+
+const saveLocalStorage = tasksList => {
+  localStorage.setItem('tasks', JSON.stringify(tasksList)); //stringify convierte codigo JS a JSON, setIten para guardar info (1er parametro la clave con la que se va a guardar , el segundo el valor ,  ambos tienes que estar en JSON)
+};
 
 
 
@@ -160,6 +167,24 @@ let obtenerInformacion = e => {
 
 
 
+const mostrarCards = e => {
+  saveLocalStorage(array)
+  e.preventDefault();
+  let objetocapturado = input.value
+    let valor = validarId(objetocapturado)
+    
+    if (!valor){
+      alert("No existe el Id de la Pizza")
+      return
+  
+    }
+
+  let objeto = pizzas.find(variable => variable.id == Number(objetocapturado))
+  renderizarElemento(objeto)
+
+  
+}
+
 //  pre: Pasamos por parametros una lista y el valor de un id
 //  pos: Verificamos que el valor de el idea se encuentre dentro de los valores de la lista y devolvemos un booleano
 
@@ -170,6 +195,19 @@ function validarId  ( inputid) {
 
 }
 
+function crearElemento (valor){
+  const {nombre,img,ingredientes,precio}=valor;
+  return `
+        
+          <li class = 'nombre'> ${nombre} </li>
+          <li class = 'img'> <img src=${img}> </li>
+          <li class = 'ingredientes'>INGREDIENTES: <br> ${ingredientes.join(" , ")} </li> 
+          <li class = 'precio'>PRECIO: ${precio} </li>
+      
+      `
+        
+}
 
-
-div.addEventListener("submit", obtenerInformacion ) ;
+function renderizarElemento (valor){
+  cards.innerHTML = crearElemento(valor)
+}
